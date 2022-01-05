@@ -1,4 +1,4 @@
-from sys import argv, stderr, stdout
+from sys import argv, stderr
 import message
 from random import randint
 
@@ -49,22 +49,22 @@ class HQ9Plus:
 
     @staticmethod
     def __hello():
-        print("Hello, world!", end="", flush=True)
+        print("Hello, world!", end="")
 
     def __quine(self):
-        print(self.__source, flush=True)
+        print(self.__source)
 
     @staticmethod
     def __ninety_nine_bottles_of_beer():
         for i in range(99, 1, -1):
             print(f"{i} bottles of beer on the wall, {i} bottles of beer.\n"
-                  f"Take one down and pass it around, {i - 1} bottles of beer on the wall.", end="", flush=True)
+                  f"Take one down and pass it around, {i - 1} bottles of beer on the wall.", end="")
         print("1 bottle of beer on the wall, 1 bottle of beer.\n"
               "Take one down and pass it around, no more bottles of beer on the wall.\n"
               "1 bottle of beer on the wall, 1 bottle of beer.\n"
               "Take one down and pass it around, no more bottles of beer on the wall.\n"
               "No more bottles of beer on the wall, no more bottles of beer.\n"
-              "Go to the store and buy some more, 99 bottles of beer on the wall.\n", end="", flush=True)
+              "Go to the store and buy some more, 99 bottles of beer on the wall.\n", end="")
 
     def __increment(self):
         self.accumulator += 1
@@ -72,12 +72,10 @@ class HQ9Plus:
     def __error(self, line, char):
         source_list = self.__source.split("\n")
         print(flush=True)
-        print(f"file: {self.__file_name}, line {line}",flush=True)
-        print(f"{source_list[line - 1]}", flush=True)
+        print(f"\nfile: {self.__file_name}, line {line}", flush=True)
+        print(f"{source_list[line - 1]}")
         space = " " * (char - 1)
-        print(f"{space}^{message.error_message[randint(0, len(message.error_message) - 1)]}", file=stderr, flush=True)
-        stdout.flush()
-        stderr.flush()
+        print(f"{space}^{message.error_message[randint(0, len(message.error_message) - 1)]}", file=stderr)
         exit(-1)
 
 
