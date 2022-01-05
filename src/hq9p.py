@@ -52,7 +52,7 @@ class HQ9Plus:
         print("Hello, world!", end="")
 
     def __quine(self):
-        print(self.__source)
+        print(self.__source, end="")
 
     @staticmethod
     def __ninety_nine_bottles_of_beer():
@@ -71,8 +71,7 @@ class HQ9Plus:
 
     def __error(self, line, char):
         source_list = self.__source.split("\n")
-        print(flush=True)
-        print(f"\nfile: {self.__file_name}, line {line}", flush=True)
+        print(f"\nfile: {self.__file_name}, line {line}")
         print(f"{source_list[line - 1]}")
         space = " " * (char - 1)
         print(f"{space}^{message.error_message[randint(0, len(message.error_message) - 1)]}", file=stderr)
